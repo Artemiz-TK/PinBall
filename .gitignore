@@ -28,7 +28,7 @@
 # Visual Studio cache directory
 .vs/
 
-# Visual Studio cache directory
+# Visual Studio Code cache directory
 .vscode/
 
 # Gradle cache directory
