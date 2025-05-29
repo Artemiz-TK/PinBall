@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable]
 public class GroundCheckerController : MonoBehaviour
 {
     public GameObject Ball;
@@ -18,26 +19,12 @@ public class GroundCheckerController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (!Ball.activeInHierarchy)
-        {
-            Ball = GameObject.Find("Bolinha poggers :)");
-            Ball.SetActive(true);
-            Debug.ClearDeveloperConsole();
-        }
-    }
-
     IEnumerator Delay()
     {
-        Ball.gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(0.060f);
-
+        var newgo = Instantiate(Ball, targetPosition, Quaternion.identity);
+        Destroy(Ball);
+        newgo.name = "Bolinha poggers :)";
         yield return null;
-
-        transformBall.position = targetPosition;
-        yield return new WaitForSeconds(0.2f);
-        Ball.gameObject.SetActive(true);
     }
+
 }
